@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'slim-rails'
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails'
+gem 'sorcery'
 
 group :development, :test do
   gem 'rspec-rails'
