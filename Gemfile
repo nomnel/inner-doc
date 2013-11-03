@@ -9,6 +9,15 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec', require: false
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
