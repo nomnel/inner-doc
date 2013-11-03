@@ -1,0 +1,17 @@
+header.navbar.navbar-default(role='navigation')
+  .container
+    .navbar-header
+      .navbar-toggle.collapsed
+        - if logged_in?
+          = link_to t('sign_out'), signout_path
+        - else
+          = link_to t('sign_in'), signin_path
+
+      = link_to 'Inner Doc', root_path, class: 'navbar-brand'
+    nav.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li
+          - if logged_in?
+            = link_to t('sign_out'), signout_path
+          - else
+            = link_to t('sign_in'), signin_path

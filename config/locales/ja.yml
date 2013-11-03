@@ -1,7 +1,7 @@
 ja:
   sign_up: "サインアップ"
   sign_in: "ログイン"
-  sign_out: "サインアウト"
+  sign_out: "ログアウト"
   registered_successfully: "サインアップしました"
   signed_in_successfully: "ログインしました"
   signed_out_successfully: "ログアウトしました"
