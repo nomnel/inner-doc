@@ -1,0 +1,16 @@
+= form_for @article do |f|
+  - if @article.errors.any?
+    .error_messages
+      ul.alert.alert-danger
+        - for message in @article.errors.full_messages
+          li= message
+
+  .field.form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+
+  .field.form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control', rows: 10
+
+  .actions= f.submit class: 'btn btn-default'

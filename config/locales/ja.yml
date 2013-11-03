@@ -7,9 +7,16 @@ ja:
   signed_out_successfully: "ログアウトしました"
   invalid_email_or_password: "メールアドレスかパスワードが違います"
 
+  articles: "記事一覧"
+  new_article: "新規投稿"
+  edit_article: "記事編集"
+  article_was_successfully_created: "記事を投稿しました"
+  article_was_successfully_updated: "記事を編集しました"
+
   activerecord:
     models:
       user: "ユーザー"
+      article: "記事"
 
     attributes:
       user:
@@ -17,6 +24,10 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード(確認)"
+
+      article:
+        title: "タイトル"
+        content: "本文"
 
   date:
     formats:
@@ -167,6 +178,11 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード(確認)"
+
+      article:
+        title: "タイトル"
+        content: "本文"
+        updated_at: "最終更新日"
 
   errors:
     format: "%{attribute} %{message}"

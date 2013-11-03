@@ -1,0 +1,14 @@
+.page-header
+  h1= t('articles')
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th= t('helpers.label.article.title')
+        th= t('helpers.label.article.updated_at')
+    tbody
+      - @articles.each do |article|
+        tr
+          td= link_to article.title, edit_article_path(article)
+          td= article.updated_at.to_date
