@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:edit, :update, :destroy]
   def index
     @articles = Article.order('id DESC')
   end
@@ -8,7 +9,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def create
@@ -21,7 +21,6 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update(article_params)
       redirect_to edit_article_path(@article), notice: t('article_was_successfully_updated')
     else
@@ -29,7 +28,16 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    @article.destroy
+    redirect_to articles_url, notice: t('article_was_successfully_deleted')
+  end
+
   private
+    def set_article
+      @article = Article.find(params[:id])
+    end
+
     def article_params
       params.require(:article).permit(
         :title,

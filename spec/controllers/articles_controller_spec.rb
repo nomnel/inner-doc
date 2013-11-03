@@ -96,4 +96,20 @@ describe ArticlesController do
     end
   end
 
+  describe 'DELETE #destroy' do
+    before :each do
+      @article = create(:article)
+    end
+
+    it "deletes the article" do
+      expect{
+        delete :destroy, id: @article
+      }.to change(Article, :count).by(-1)
+    end
+
+    it "redirects to articles#index" do
+      delete :destroy, id: @article
+      expect(response).to redirect_to articles_url
+    end
+  end
 end

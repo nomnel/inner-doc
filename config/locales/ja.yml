@@ -10,8 +10,10 @@ ja:
   articles: "記事一覧"
   new_article: "新規投稿"
   edit_article: "記事編集"
+  delete_article: "削除"
   article_was_successfully_created: "記事を投稿しました"
   article_was_successfully_updated: "記事を編集しました"
+  article_was_successfully_deleted: "記事を削除しました"
 
   activerecord:
     models:

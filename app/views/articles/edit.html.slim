@@ -2,3 +2,5 @@
   h1= t('edit_article')
 
 = render 'form'
+
+= link_to t('delete_article'), article_path(@article), method: :delete, class: 'btn btn-danger'
