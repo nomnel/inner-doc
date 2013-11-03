@@ -8,6 +8,6 @@ html
     = csrf_meta_tags
   body
     = render 'header'
-    = render 'alert'
     .container
+      = render 'alert'
       == yield
