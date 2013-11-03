@@ -14,7 +14,7 @@ feature 'Sign in' do
     fill_in I18n.t("#{p}.password"), with: @pw
     click_button I18n.t('sign_in')
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq articles_path
     expect(page).to have_content I18n.t('signed_in_successfully')
   end
 

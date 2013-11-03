@@ -17,7 +17,7 @@ feature 'Sign up' do
       click_button I18n.t('helpers.submit.create')
     }.to change(User, :count).by(1)
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq articles_path
     expect(page).to have_content I18n.t('registered_successfully')
   end
 

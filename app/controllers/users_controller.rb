@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   def new
+    redirect_to articles_path if logged_in?
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
+    pw = @user.password
     if @user.save
-      login(@user.email, @user.password)
-      redirect_to root_url, notice: t('registered_successfully')
+      login(@user.email, pw)
+      redirect_to articles_url, notice: t('registered_successfully')
     else
       render :new
     end

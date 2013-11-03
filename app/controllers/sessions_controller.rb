@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to articles_path if logged_in?
   end
 
   def create
@@ -12,6 +13,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    redirect_to signin_path unless logged_in?
     logout
     redirect_to root_path, notice: t('signed_out_successfully')
   end
