@@ -2,6 +2,7 @@ require 'spec_helper'
 
 feature 'Create article' do
   background do
+    sign_in
     @article = build(:article)
   end
 
@@ -33,6 +34,7 @@ end
 
 feature 'Update article' do
   background do
+    sign_in
     @article = create(:article)
   end
 
@@ -66,6 +68,7 @@ end
 
 feature 'Delete article' do
   scenario 'successfully' do
+    sign_in
     @article = create(:article)
     visit edit_article_path(@article)
 

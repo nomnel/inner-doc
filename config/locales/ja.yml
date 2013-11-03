@@ -6,6 +6,7 @@ ja:
   signed_in_successfully: "ログインしました"
   signed_out_successfully: "ログアウトしました"
   invalid_email_or_password: "メールアドレスかパスワードが違います"
+  please_sign_in_first: "ログインしてください"
 
   articles: "記事一覧"
   new_article: "新規投稿"
