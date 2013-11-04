@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ArticlesController do
-  describe "user access" do
+  shared_examples "signed in user's access" do
     before :each do
       @user = create(:user)
       set_user_session @user
@@ -120,7 +120,13 @@ describe ArticlesController do
     end
   end
 
+  describe "user access" do
+    it_behaves_like "signed in user's access"
+  end
+
   describe "admin access" do
+    it_behaves_like "signed in user's access"
+
     describe 'DELETE #destroy' do
       before :each do
         @user = create(:admin)
