@@ -65,17 +65,3 @@ feature 'Update article' do
     expect(current_path).to eq article_path(@article)
   end
 end
-
-feature 'Delete article' do
-  scenario 'successfully' do
-    user = sign_in
-    @article = article_editable_by_user create(:article), user
-    visit edit_article_path(@article)
-
-    expect{
-      click_link I18n.t('delete_article')
-    }.to change(Article, :count).by(-1)
-    expect(current_path).to eq articles_path
-    expect(page).to have_content I18n.t('article_was_successfully_deleted')
-  end
-end

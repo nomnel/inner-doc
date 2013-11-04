@@ -6,5 +6,5 @@ InnerDoc::Application.routes.draw do
   resources :sessions, only: :create
 
   resources :users
-  resources :articles, except: :show
+  resources :articles, except: [:show, :destroy]
 end

@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :require_login
-  before_action :set_article, only: [:edit, :update, :destroy]
+  before_action :set_article, only: [:edit, :update]
 
   def index
     @articles = current_user.articles.order('id DESC')
@@ -29,11 +29,6 @@ class ArticlesController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @article.destroy
-    redirect_to articles_url, notice: t('article_was_successfully_deleted')
   end
 
   private
