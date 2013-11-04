@@ -3,9 +3,9 @@ module SigninMacros
     session[:user_id] = user.id
   end
 
-  def sign_in
+  def sign_in as: :user
     pw = Faker::Internet.password
-    user = create(:user, password: pw, password_confirmation: pw)
+    user = create(as, password: pw, password_confirmation: pw)
 
     visit signin_path
     p = 'helpers.label.user'

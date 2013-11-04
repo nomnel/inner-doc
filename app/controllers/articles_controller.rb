@@ -1,9 +1,13 @@
 class ArticlesController < ApplicationController
   before_action :require_login
-  before_action :set_article, only: [:edit, :update]
+  before_action :set_article, only: [:edit, :update, :destroy]
 
   def index
-    @articles = current_user.articles.order('id DESC')
+    if current_user.admin?
+      @articles = Article.order('id DESC')
+    else
+      @articles = current_user.articles.order('id DESC')
+    end
   end
 
   def new
@@ -31,9 +35,22 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user.admin?
+      @article.destroy
+      redirect_to articles_url, notice: t('article_was_successfully_deleted')
+    else
+      redirect_to articles_url, notice: t('admin_user_only')
+    end
+  end
+
   private
     def set_article
-      @article = current_user.articles.find(params[:id])
+      if current_user.admin?
+        @article = Article.find(params[:id])
+      else
+        @article = current_user.articles.find(params[:id])
+      end
     end
 
     def article_params

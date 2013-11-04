@@ -7,6 +7,7 @@ ja:
   signed_out_successfully: "ログアウトしました"
   invalid_email_or_password: "メールアドレスかパスワードが違います"
   please_sign_in_first: "ログインしてください"
+  admin_user_only: "管理者のみが行える操作です"
 
   articles: "記事一覧"
   back_to_articles: "記事一覧に戻る"
@@ -28,6 +29,7 @@ ja:
       user:
         username: "ユーザー名"
         email: "メールアドレス"
+        admin: "管理者権限"
         password: "パスワード"
         password_confirmation: "パスワード(確認)"
 
@@ -183,6 +185,7 @@ ja:
       user:
         username: "ユーザー名"
         email: "メールアドレス"
+        admin: "管理者権限"
         password: "パスワード"
         password_confirmation: "パスワード(確認)"
 

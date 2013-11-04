@@ -101,6 +101,44 @@ describe ArticlesController do
         expect(response).to render_template :index
       end
     end
+
+    describe 'DELETE #destroy' do
+      before :each do
+        @article = article_editable_by_user create(:article), @user
+      end
+
+      it "doesn't deletes the article" do
+        expect{
+          delete :destroy, id: @article
+        }.to_not change(Article, :count)
+      end
+
+      it "redirects to articles#index" do
+        delete :destroy, id: @article
+        expect(response).to redirect_to articles_url
+      end
+    end
+  end
+
+  describe "admin access" do
+    describe 'DELETE #destroy' do
+      before :each do
+        @user = create(:admin)
+        set_user_session @user
+        @article = article_editable_by_user create(:article), @user
+      end
+
+      it "deletes the article" do
+        expect{
+          delete :destroy, id: @article
+        }.to change(Article, :count).by(-1)
+      end
+
+      it "redirects to articles#index" do
+        delete :destroy, id: @article
+        expect(response).to redirect_to articles_url
+      end
+    end
   end
 
   describe "guest access" do
@@ -137,6 +175,14 @@ describe ArticlesController do
       it "requires login" do
         article = create(:article)
         patch :update, id: article
+        expect(response).to require_login
+      end
+    end
+
+    describe 'DELETE #destroy' do
+      it "requires login" do
+        article = create(:article)
+        delete :destroy, id: article
         expect(response).to require_login
       end
     end
