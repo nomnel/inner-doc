@@ -42,4 +42,5 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include SigninMacros
+  config.include HelperMacros
 end

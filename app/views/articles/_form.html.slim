@@ -13,4 +13,12 @@
     = f.label :content
     = f.text_area :content, class: 'form-control', rows: 10
 
+  - usernames = User.order(:id).map{|u| [u.username,u.id]}
+  .field.form-group#article_users
+    = f.label :article_users
+    .users.row
+      = f.fields_for :article_users do |builder|
+        = render 'article_user_fields', f: builder, usernames: usernames
+    = link_to_add_user_fields t('add_user'), f, usernames, class: 'btn btn-default', id: 'add_user_fields'
+
   .actions= f.submit class: 'btn btn-default'

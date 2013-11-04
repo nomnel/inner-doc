@@ -9,9 +9,12 @@ ja:
   please_sign_in_first: "ログインしてください"
 
   articles: "記事一覧"
+  back_to_articles: "記事一覧に戻る"
   new_article: "新規投稿"
   edit_article: "記事編集"
-  delete_article: "削除"
+  delete_article: "削除する"
+  add_user: "ユーザーを追加"
+  remove_user: "外す"
   article_was_successfully_created: "記事を投稿しました"
   article_was_successfully_updated: "記事を編集しました"
   article_was_successfully_deleted: "記事を削除しました"
@@ -31,6 +34,7 @@ ja:
       article:
         title: "タイトル"
         content: "本文"
+        article_users: "編集可能なユーザー"
 
   date:
     formats:
@@ -186,6 +190,7 @@ ja:
         title: "タイトル"
         content: "本文"
         updated_at: "最終更新日"
+        article_users: "編集可能なユーザー"
 
   errors:
     format: "%{attribute} %{message}"

@@ -12,5 +12,7 @@ module SigninMacros
     fill_in I18n.t("#{p}.email"),    with: user.email
     fill_in I18n.t("#{p}.password"), with: pw
     click_button I18n.t('sign_in')
+
+    user
   end
 end

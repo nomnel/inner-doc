@@ -34,8 +34,8 @@ end
 
 feature 'Update article' do
   background do
-    sign_in
-    @article = create(:article)
+    user = sign_in
+    @article = article_editable_by_user create(:article), user
   end
 
   scenario 'successfully' do
@@ -47,8 +47,8 @@ feature 'Update article' do
     fill_in I18n.t("#{p}.content"), with: @article.content
     click_button I18n.t('helpers.submit.update')
 
-    expect(find_field(I18n.t "#{p}.title").value).to eq new_title
-    expect(current_path).to eq edit_article_path(@article)
+    expect(find_link(new_title).visible?).to eq true
+    expect(current_path).to eq articles_path
     expect(page).to have_content I18n.t('article_was_successfully_updated')
   end
 
@@ -68,8 +68,8 @@ end
 
 feature 'Delete article' do
   scenario 'successfully' do
-    sign_in
-    @article = create(:article)
+    user = sign_in
+    @article = article_editable_by_user create(:article), user
     visit edit_article_path(@article)
 
     expect{

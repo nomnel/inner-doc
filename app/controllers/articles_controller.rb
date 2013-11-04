@@ -3,11 +3,12 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.order('id DESC')
+    @articles = current_user.articles.order('id DESC')
   end
 
   def new
     @article = Article.new
+    @article.article_users.build
   end
 
   def edit
@@ -24,7 +25,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to edit_article_path(@article), notice: t('article_was_successfully_updated')
+      redirect_to articles_path, notice: t('article_was_successfully_updated')
     else
       render :edit
     end
@@ -37,13 +38,14 @@ class ArticlesController < ApplicationController
 
   private
     def set_article
-      @article = Article.find(params[:id])
+      @article = current_user.articles.find(params[:id])
     end
 
     def article_params
       params.require(:article).permit(
         :title,
-        :content
+        :content,
+        article_users_attributes: [:id, :user_id, :_destroy]
       )
     end
 end

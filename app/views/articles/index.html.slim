@@ -12,3 +12,5 @@
         tr
           td= link_to article.title, edit_article_path(article)
           td= article.updated_at.to_date
+
+= link_to t('new_article'), new_article_path, class: 'btn btn-default'

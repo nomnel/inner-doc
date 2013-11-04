@@ -1,0 +1,4 @@
+.fields.col-sm-2
+  = f.hidden_field :id
+  = f.select :user_id, usernames, {selected: f.object.user_id || current_user.id}, class: 'form-control'
+  = link_to_remove_user_fields t('remove_user'), f, class: 'btn btn-default'

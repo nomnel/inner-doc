@@ -3,7 +3,8 @@ require 'spec_helper'
 describe ArticlesController do
   describe "user access" do
     before :each do
-      set_user_session create(:user)
+      @user = create(:user)
+      set_user_session @user
     end
 
     describe 'GET #new' do
@@ -43,7 +44,7 @@ describe ArticlesController do
 
     describe 'GET #edit' do
       before :each do
-        @article = create(:article)
+        @article = article_editable_by_user create(:article), @user
       end
 
       it "assigns the requested article to @article" do
@@ -59,7 +60,7 @@ describe ArticlesController do
 
     describe 'PATCH #update' do
       before :each do
-        @article = create(:article, title: 'My title')
+        @article = article_editable_by_user create(:article, title: 'My title'), @user
       end
 
       context "with valid attributes" do
@@ -90,7 +91,7 @@ describe ArticlesController do
 
     describe 'GET #index' do
       it "collects articles into @articles" do
-        article = create(:article)
+        article = article_editable_by_user create(:article), @user
         get :index
         expect(assigns :articles).to match_array [article]
       end
@@ -103,7 +104,7 @@ describe ArticlesController do
 
     describe 'DELETE #destroy' do
       before :each do
-        @article = create(:article)
+        @article = article_editable_by_user create(:article), @user
       end
 
       it "deletes the article" do
